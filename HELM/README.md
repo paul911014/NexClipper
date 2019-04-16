@@ -23,27 +23,18 @@ $ helm init --service-account tiller
 
 ## Install chart
 
-> update chart list
-
-```sh
-$ helm repo update
-```
-
 > download helm chart of NexClipper
 
 ```sh
-$ git clone ...
+$ wget 
 ```
 
 > install the chart 
 
 ```sh
-$ helm install <tgz name>
+$ helm install --set hostPath.influx=<influx data path>,hostPath.mysql=<mysql data path>,agent_endpoint.master=<master node ip>,agent_endpoint.port=<master node collector service port>,cluster.masterip=<master node ip>,cluster.masterport=<api server port> <tgz name>
 ```
-or
-```sh
-$ helm install --name <anything you want> <tgz name>
-```
+
 
 ## Uninstall chart
 
@@ -62,5 +53,5 @@ The following table lists the configurable parameters of the NexClipper chart an
 | `hostPath.mysql`                     | Hostpath of mysql                              | `/nfs/mysql`                  |
 | `agent_endpoint.master`              | IP address of master node                      | `10.0.0.2`                    |
 | `agent_endpoint.port`                | Port to use of master node                     | `32100`                       |
-| `cluster.masterip`                   | IP address of master node                      | `10.0.0.2`                    |
-| `cluster.masterport`                 | Port to use of master node                     | `6443`                        |
+| `cluster.masterip`                   | IP address of master node   option                   | `10.0.0.2`                    |
+| `cluster.masterport`                 | Port to use of master node        option             | `6443`                        |
